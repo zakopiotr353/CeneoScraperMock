@@ -103,7 +103,41 @@
                                     });
                                     //INSERTING ROWS INTO TABLE 
                                     $('#opinions').append(opinion);
+                            $.getJSON("39562616.json", function (data) {
+                                var opinion = '';
+                                // ITERATING THROUGH OBJECTS
+                                $.each(data, function (key, value) {
+                                    //CONSTRUCTION OF ROWS HAVING
+                                    // DATA FROM JSON OBJECT
+                                    opinion += '<tr>';
+                                    opinion += '<td>' + 
+                                        value.opinion_id + '</td>';
+                                    opinion += '<td>' + 
+                                        value.author + '</td>';
+                                    opinion += '<td>' + 
+                                        value.recommendation + '</td>';
+                                    opinion += '<td>' + 
+                                        value.stars + '</td>';
+                                    opinion += '<td>' + 
+                                        value.content.substring(0,20) + '</td>';
+                                    opinion += '<td>' + 
+                                        value.pros + '</td>';
+                                    opinion += '<td>' + 
+                                        value.cons + '</td>';
+                                    opinion += '<td>' +
+                                        (value.purchased ? 'TAK' : 'NIE') + '</td>';
+                                    opinion += '<td>' + 
+                                        value.opinion_date + '</td>';
+                                    opinion += '<td>' + 
+                                        (value.purchase_date ? value.purchase_date : "") + '</td>';
+                                    opinion += '<td>' + 
+                                        value.useful_count + '</td>';
+                                    opinion += '<td>' + 
+                                        value.unuseful_count + '</td>';
+                                    opinion += '</tr>';
                                 });
+                                //INSERTING ROWS INTO TABLE 
+                                $('#opinions').append(opinion);
                             });
                         </script>
                     </tbody>
